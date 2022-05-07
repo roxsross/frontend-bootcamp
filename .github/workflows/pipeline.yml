@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  APP_ID: dicxwv2f5ex1s
+  BRANCH_NAME: master
+  BUCKET_S3: frontend-bootcamp
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,5 +29,8 @@ jobs:
     - name: build frontend
       run: |
           npm run build
+    - name: ZIP Frontend
+      run: cd build;zip ../dist.zip * -r    
     - name: listar
-      run: ls      
+      run: ls       
+   
