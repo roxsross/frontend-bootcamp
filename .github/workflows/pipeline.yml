@@ -55,5 +55,8 @@ jobs:
     - name: upload bucket-s3
       run: aws s3 cp dist.zip s3://${{ env.BUCKET_S3 }}
 
+    - name: deploy AWS Amplify
+      run: aws amplify start-deployment --app-id ${{ env.APP_ID }} --source-url s3://${{ env.BUCKET_S3 }}/dist.zip --branch-name ${{ env.BRANCH_NAME }}
+
 
    
